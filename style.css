@@ -1,3 +1,19 @@
+/ ページ全体の背景と基本フォント /
+body {
+background-color: #f4f4f4; / 薄いグレー /
+font-family: sans-serif;
+color: #333;
+}
+
+profile-card {
+width: 600px; / カードの幅を600pxに固定 /
+margin: 40px auto; / 上下40px、左右は自動で中央寄せ /
+background-color: #ffffff; / カードの背景は白 /
+padding: 30px; / カードの内側に30pxの余白 /
+border: 1px solid #ddd; / 薄いグレーの枠線 /
+border-radius: 8px; / 角を少し丸くする /
+}
+
 a:hover {
   color: green;
 }
