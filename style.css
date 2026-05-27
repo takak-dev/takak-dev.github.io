@@ -43,6 +43,9 @@ ul {
 .profile-image { 
   display: block; 
   margin: 0 auto 20px;
+  width: 150px;          /* 横幅を150pxにする */
+  height: 150px;         /* 縦幅も150pxにして「正方形」にする */
+  object-fit: cover;     /* 画像が歪まないように、中央で綺麗にくり抜く魔法のプロパティ */
   border-radius: 50%; /* 💡コロンが抜けていたのを修正しました！ */
 }
 
