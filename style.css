@@ -3,8 +3,38 @@
    ========================================================================== */
 body {
   background-color: #f4f4f4; /* 薄いグレー */
-  font-family: sans-serif;
-  color: #333;
+  font-family: sans-serif; /* 文字をゴシック体にする */
+  color: #333; /* 文字色を濃いグレーにする */
+}
+
+.site-header {
+  display: flex; /* ロゴとナビゲーションを横並びにする */
+  justify-content: space-between; /* 両端に配置 */
+  align-items: center; /* 垂直方向中央揃え */
+  padding: 10px 20px; /* ヘッダー内側の余白 */
+  background-color: #333; /* ヘッダーの背景を濃いグレーにする */
+  color: white; /* ヘッダー内の文字を白にする */
+}
+
+.site-header nav ul {
+  display: flex; /* ナビゲーションの項目も横並びに */
+  list-style: none; /* リストの黒丸を削除 */
+  padding: 0; /* ulに最初から付いている余白を削除 */
+  gap: 15px; /* 項目間の隙間 */
+}
+
+.container {
+  display: flex; /* メイン部分とサイドバーを横並びにする */
+}
+
+.main-content {
+  flex-grow: 1; /* 残りのスペースをすべて埋める */
+  background-color: lightblue; /* メイン部分の背景色 */
+}
+
+.sidebar {
+  flex-basis: 200px; /* 幅を200pxに固定 */
+  background-color: lightgreen; /* サイドバーの背景色 */
 }
 
 /* ==========================================================================
@@ -12,18 +42,18 @@ body {
    ========================================================================== */
 h1 {
   text-align: center; /* テキストを中央寄せ */
-  color: #2c3e50;
+  color: #2c3e50; /* 見出しを落ち着いた濃い青にする */
 }
 
 h2 {
   border-bottom: 2px solid #3498db; /* 青い下線を追加 */
-  padding-bottom: 5px;
-  margin-top: 30px;
+  padding-bottom: 5px; /* 文字と下線の間に余白を作る */
+  margin-top: 30px; /* 前の要素との間に余白を作る */
 }
 
 ul {
   list-style: none; /* リストの黒丸を削除 */
-  padding: 0;
+  padding: 0; /* ulに最初から付いている余白を削除 */
 }
 
 /* ==========================================================================
@@ -31,38 +61,64 @@ ul {
    ========================================================================== */
 /* 💡クラス名なので頭に「.」が必要です！ */
 .profile-card {
-  width: 600px;
-  margin: 40px auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  width: 600px; /* カード全体の横幅 */
+  margin: 40px auto; /* 上下に余白を作り、左右は中央寄せ */
+  background-color: #ffffff; /* カードの背景を白にする */
+  padding: 30px; /* カード内側の余白 */
+  border: 1px solid #ddd; /* 薄いグレーの枠線 */
+  border-radius: 8px; /* 角を少し丸くする */
 }
 
 /* 💡カードの中にある画像なので、直後に配置すると読みやすい */
-.profile-image { 
-  display: block; 
+.profile-image {
+  display: block;
   margin: 0 auto 20px;
-  width: 200px;          /* 横幅を150pxにする */
-  height: 200px;         /* 縦幅も150pxにして「正方形」にする */
-  object-fit: cover;     /* 画像が歪まないように、中央で綺麗にくり抜く魔法のプロパティ */
+  width: 200px; /* 横幅を150pxにする */
+  height: 200px; /* 縦幅も150pxにして「正方形」にする */
+  object-fit: cover; /* 画像が歪まないように、中央で綺麗にくり抜く魔法のプロパティ */
   border-radius: 50%; /* 💡コロンが抜けていたのを修正しました！ */
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  flex-basis: 300px; /* カードの基本幅を指定 */
+  /* ...カードの装飾スタイル... */
+}
+
+.social-links {
+  display: flex; /* これで<li>が横に並ぶ */
+  justify-content: center; /* アイテムを中央に寄せる */
+  gap: 15px; /* アイテム間の隙間を15pxに */
+  list-style: none; /* 黒丸を削除 */
+  padding: 0; /* ulに最初から付いている余白を削除 */
+  margin-top: 20px; /* 上の要素との間に余白を作る */
 }
 
 /* ==========================================================================
    4. 子要素・擬似クラスなどの細かい装飾（影響範囲：特定の状態や特殊な行）
    ========================================================================== */
-li a {
-  text-decoration: none;
-  color: #3498db;
+.social-links a {
+  display: block; /* paddingを有効にするためブロック要素にする */
+  padding: 10px 20px; /* リンクをボタンのように大きくする */
+  background-color: #3498db; /* 青い背景 */
+  color: white; /* 白い文字 */
+  text-decoration: none; /* リンクの下線を削除 */
+  border-radius: 5px; /* 少し角を丸める */
+  transition: background-color 0.3s; /* 背景色の変化を滑らかにする */
 }
 
 /* 💡通常のリンク（li a）の「下に」書くことで、ホバー時の上書きが絶対に成功する */
-a:hover {
-  color: green;
-  text-decoration: underline; /* マウスが乗ったら下線を表示 */
+.social-links a:hover {
+  background-color: #2cb469; /* マウスを乗せた時に少し濃い青にする */
+  color: rgb(0, 0, 0); /* ボタン内の文字色を白のままにする */
+  text-decoration: none; /* hover時も下線は不要 */
 }
 
 li:nth-child(even) {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* 偶数番目のliだけ背景色を変える */
 }
